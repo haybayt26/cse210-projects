@@ -4,7 +4,11 @@ public class Reference
 {
     public List<Reference> _scriptures = new List<Reference>();
     private Random randomGenerator = new Random();
-    private string _fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "library.txt");
+    private string _fileName = Path.Combine(
+    AppDomain.CurrentDomain.BaseDirectory,
+    "..", "..", "..",
+    "library.txt"
+);
     private string _book;
     private int _chapter;
     private int _verse;
@@ -53,6 +57,11 @@ public class Reference
     public void LoadScriptures()
     {
         _scriptures.Clear();
+
+        Console.WriteLine("CurrentDirectory: " + Directory.GetCurrentDirectory());
+        Console.WriteLine("BaseDirectory: " + AppDomain.CurrentDomain.BaseDirectory);
+        Console.WriteLine("Looking for: " + Path.GetFullPath(_fileName));
+        Console.WriteLine("Exists? " + File.Exists(_fileName));
 
         if (File.Exists(_fileName))
         {
