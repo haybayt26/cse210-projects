@@ -3,11 +3,12 @@
 public class Reference
 {
     public List<Reference> _scriptures = new List<Reference>();
-    private string _fileName = "library.txt";
+    private Random randomGenerator = new Random();
+    private string _fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "library.txt");
     private string _book;
     private int _chapter;
     private int _verse;
-    private int _endVerse;
+    private int? _endVerse;
     private Reference _chosenScripture;
     private List<string> _verses = new List<string>();
 
@@ -34,9 +35,16 @@ public class Reference
     }
 
 
-    public string GetDisplayText()
+    public string GetReferenceText()
     {
-        
+        if (_endVerse.HasValue)
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        }
+        else
+        {
+            return $"{_book} {_chapter}:{_verse}";
+        }
     }
     
     
@@ -74,12 +82,21 @@ public class Reference
         }
     }
 
-    public Reference ChooseScripture()
+    public Reference GetChosenScripture()
     {
-        Console.Clear();
-        Random randomGenerator = new Random();
+        if (_scriptures.Count == 0)
+        {
+            Console.WriteLine("No scriptures available to choose from.");
+            return null;
+        }
+        
         _chosenScripture = _scriptures[randomGenerator.Next(_scriptures.Count)];
         return _chosenScripture;
 
+    }
+
+    public List<string> GetChosenVerses()
+    {
+        return _verses;
     }
 }
