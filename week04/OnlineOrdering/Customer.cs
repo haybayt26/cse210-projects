@@ -7,5 +7,21 @@ public class Customer
     private Address _address;
 
 
-    
+    public Customer(string name, Address address)
+    {
+        _name = name;
+        _address = address;
+    }
+
+
+    public bool IsAddressUSA()
+    {
+       return _address.IsUSA();
+    }
+
+    public string GetShippingInfo()
+    {
+        
+        return $"\n{_name}\n{_address.GetAddress()}";
+    }
 }
