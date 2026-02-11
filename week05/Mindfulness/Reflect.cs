@@ -13,12 +13,12 @@ public class Reflect
 
     public string GetReflectionPrompt()
     {
-        
+        return "Will return prompt :)";
     }
 
     public string GetQuestion()
     {
-        
+        return "Will return questions";
     }
 
     public void DisplayPrompt(string prompt)
