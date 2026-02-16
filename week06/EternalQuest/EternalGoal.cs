@@ -11,19 +11,14 @@ public class EternalGoal : Goal
         
     }
 
-    public override void RecordEvent()
+    public EternalGoal(string name, string description, string points, bool complete) :base(name, description, points, complete)
     {
         
     }
 
-    public override bool IsComplete()
-    {
-        return base.IsComplete();
-    }
-
     public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation();
+        return base.GetStringRepresentation()+ $"|eternal";
     }
 
 
